@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:text="Recuperacion de su contraseña"
+            android:layout_marginBottom="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ingrese su correo electronico, se le enviará un enlace para restablecer su contraseña o activa de nuevo su cuenta."
+            android:textSize="20dp" />
+        <EditText
+            android:hint="Correo electronico"
+            android:layout_height="62dp"
+            android:id="@+id/txtCorreoRecuperarCuenta"
+            android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="30dp"
+            android:singleLine="true"
+            android:maxLength="30"
+            android:imeOptions="actionGo"
+            android:paddingLeft="10dp"/>
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/btnRecuperarCuenta"
+            android:text="Enviar"
+            android:layout_marginRight="150px"
+            android:layout_marginLeft="150px"
+            android:textSize="18dp"
+            />
+    </LinearLayout>
+</LinearLayout>

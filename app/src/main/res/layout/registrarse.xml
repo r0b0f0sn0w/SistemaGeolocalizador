@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:layout_marginBottom="10dp"
+                android:text="Registrarse"
+                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su nombre"
+                android:id="@+id/txtRegistroNombre"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apellido paterno:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su apellido paterno"
+                android:id="@+id/txtRegistroAppPat"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apellido materno:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su apellido materno"
+                android:id="@+id/txtRegistroAppMat"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefono:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su telefono"
+                android:id="@+id/txtRegistroTelefono"
+                android:inputType="number"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefono 2:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su nombre"
+                android:id="@+id/txtRegistroTelefono2"
+                android:inputType="number"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dirección:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su nombre"
+                android:id="@+id/txtRegistroDireccion"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Corrreo electronico:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese su correo electronico"
+                android:inputType="textEmailAddress"
+                android:id="@+id/txtRegistroCorreo"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear contraseña:"/>
+            <EditText
+                android:id="@+id/txtRegistroPassword"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Contraseña"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:paddingLeft="10dp"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comprobar contraseña:"/>
+            <EditText
+                android:id="@+id/txtRegistroPassword2"
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:layout_marginBottom="30dp"
+                android:hint="Ingrese de nuevo la contraseña"
+                android:imeOptions="actionGo"
+                android:inputType="textPassword"
+                android:maxLength="15"
+                android:paddingLeft="10dp"
+                android:singleLine="true" />
+            <Button
+                android:id="@+id/btnFrmRegistrarse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear cuenta"
+                tools:ignore="MissingConstraints"
+                android:layout_marginRight="150px"
+                android:layout_marginLeft="150px"
+                android:textSize="18dp"/>
+            <Button
+                android:id="@+id/btnFrmCancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancelar"
+                tools:ignore="MissingConstraints"
+                android:layout_marginRight="150px"
+                android:layout_marginLeft="150px"
+                android:textSize="18dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

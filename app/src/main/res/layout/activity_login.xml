@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".LoginActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="685dp"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Correo electronico"
+            android:textSize="20dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/iconcorreo" />
+
+            <EditText
+                android:id="@+id/txtLogincorreo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:hint="Correo electronico"
+                android:imeOptions="actionNext"
+                android:inputType="textWebEmailAddress"
+                android:maxLength="50"
+                android:paddingLeft="10dp"
+                android:singleLine="true"
+                tools:ignore="MissingConstraints" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="5dp"
+            android:text="Contraseña"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/iconpassword" />
+
+            <EditText
+                android:id="@+id/txtLoginpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:maxLength="15" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="150px"
+            android:layout_marginRight="150px"
+            android:layout_marginBottom="20dp"
+            android:text="Iniciar sesion"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Olvidaste tu contraseña?" />
+
+            <Button
+                android:id="@+id/btnRecuperarCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginLeft="10dp"
+                android:text="Recuperar cuenta"
+                android:textSize="14dp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="201dp"
+                tools:layout_editor_absoluteY="300dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp">
+
+            <TextView
+                android:id="@+id/ss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes una cuenta?"/>
+            <Button
+                android:id="@+id/btnRegistrarse"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="30dp"
+                android:text="Registrarse"
+                android:textSize="14dp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="201dp"
+                tools:layout_editor_absoluteY="300dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp">
+            <Button
+                android:id="@+id/btnLoginEscanear"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="30dp"
+                android:text="Escanear"
+                android:textSize="14dp"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="201dp"
+                tools:layout_editor_absoluteY="300dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
