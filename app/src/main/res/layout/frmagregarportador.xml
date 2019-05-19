@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar portador"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese el nombre"
+                android:id="@+id/txtAgregarPortadorNombre"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apellido Paterno:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese el apellido paterno"
+                android:id="@+id/txtAgregarPortadorAppPat"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Apellido materno:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese el apellido materno"
+                android:id="@+id/txtAgregarPortadorAppMat"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefono de contacto No. 1:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese el telefono"
+                android:id="@+id/txtAgregarPortadorTelefono"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefono de contacto No. 2:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese el telefono"
+                android:id="@+id/txtAgregarPortadorTelefono2"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Direccion:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese la direccion"
+                android:id="@+id/txtAgregarPortadorDireccion"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Padecimiento:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese la padecimiento"
+                android:id="@+id/txtAgregarPortadorDescripcion"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:maxLength="30"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripción:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:hint="Ingrese la descripcion"
+                android:id="@+id/txtAgregarPortadorPadecimiento"
+                android:inputType="text"
+                android:layout_marginBottom="10dp"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:paddingLeft="10dp"/>
+            <Button
+                android:text="Agregar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2ECC71"
+                android:textStyle="bold"
+                android:id="@+id/btnAgregarPortador"/>
+            <Button
+                android:text="Cancelar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2ECC71"
+                android:textStyle="bold"
+                android:id="@+id/btnCancelarAgregarPortador"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,7 +1,6 @@
 package com.r0_f0.SistemaGeolocalizador;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -97,8 +96,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLoginEscanear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intento = new Intent(LoginActivity.this, AgregarPortadorActivity.class);
-                startActivity(intento);
+                /*Intent intento = new Intent(LoginActivity.this, AgregarPortadorActivity.class);
+                startActivity(intento);*/
             }
         });
     }//Cierra el onCreate
