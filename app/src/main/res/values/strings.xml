@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SistemaGeolocalizador</string>
+    <string name="app_name">Sistema geolocalizador</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -14,8 +14,26 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="contrase_a">Contraseña</string>
     <string name="correo_electr_nico">Correo electrónico</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="lvidaste_tu_contrase_a">¿Ólvidaste tu contraseña?</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="comprobar_contrase_a">Comprobar contraseña:</string>
+    <string name="ingrese_de_nuevo_la_contrase_a">Ingrese de nuevo la contraseña</string>
+    <string name="crear_contrase_a">Crear contraseña:</string>
+    <string name="contrase_a">Contraseña</string>
+    <string name="ingrese_su_correo_electronico">Ingrese su correo electronico</string>
+    <string name="corrreo_electronico">Corrreo electronico:</string>
+    <string name="direcci_n">Dirección:</string>
+    <string name="telefono_2">Telefono 2:</string>
+    <string name="ingrese_su_telefono">Ingrese su telefono</string>
+    <string name="telefono">Telefono:</string>
+    <string name="ingrese_su_apellido_materno">Ingrese su apellido materno</string>
+    <string name="apellido_materno">Apellido materno:</string>
+    <string name="ingrese_su_apellido_paterno">Ingrese su apellido paterno</string>
+    <string name="ingrese_su_nombre">Ingrese su nombre</string>
+    <string name="nombre">Ingrese su nombre:</string>
+    <string name="apellido_paterno">Apellido paterno:</string>
 </resources>

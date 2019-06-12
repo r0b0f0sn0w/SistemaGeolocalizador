@@ -1,5 +1,6 @@
 package com.r0_f0.SistemaGeolocalizador;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Handler;
@@ -7,9 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
-    private ImageView i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +22,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intento);
                 finish();
             }
-        },3000);
+        },1000);
     }//Cierra OnCreate
 }//Cierra la clase MainActivity

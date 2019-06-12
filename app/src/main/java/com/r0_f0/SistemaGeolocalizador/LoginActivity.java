@@ -348,12 +348,13 @@ public class LoginActivity extends AppCompatActivity {
         builder.setView(vista);
         final AlertDialog dialogoRecuperarCuenta =builder.create();
         dialogoRecuperarCuenta.show();
-        Button btnFrmRegistrarse=vista.findViewById(R.id.btnRecuperarCuenta);
+        Button btnFrmRegistrarse=vista.findViewById(R.id.btnEnviarRecuperarCuenta);
         btnFrmRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Toast.makeText(LoginActivity.this,"Funciona",Toast.LENGTH_LONG).show();
-                dialogoRecuperarCuenta.dismiss();
+                dialogoRecuperarCuenta.dismiss();*/
             }
         });
     }//Cierra el metodo para mostrar el formulario de registro
@@ -370,7 +371,6 @@ public class LoginActivity extends AppCompatActivity {
         }//cierra else
         return v;
     }//cierra metodo validarFRM
-
     /*Metodos para la validadcion del dispositivo*/
     /*Metodo para validar si el dispositivo tiene acceso a internet*/
     public static Boolean isOnlineNet() {
