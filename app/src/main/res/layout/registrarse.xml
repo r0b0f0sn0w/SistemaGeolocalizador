@@ -54,7 +54,6 @@
                     android:inputType="text"/>
             </android.support.design.widget.TextInputLayout>
 
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,9 +77,8 @@
                     android:textColor="#FBFCFC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
-
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -92,14 +90,14 @@
                     android:textColor="#FBFCFC"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="#FBFCFC"
-                android:hint="Direccion">
+                android:hint="Dirección">
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/txtRegistroDireccion"
                     android:layout_width="match_parent"
@@ -116,9 +114,8 @@
                     android:id="@+id/txtRegistroCorreo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="textEmailAddress"/>
             </android.support.design.widget.TextInputLayout>
-
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -129,9 +126,8 @@
                     android:id="@+id/txtRegistroPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
-
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -142,14 +138,13 @@
                     android:id="@+id/txtRegistroPassword2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
                 <Button
                     android:id="@+id/btnFrmCancelar"
                     android:layout_width="wrap_content"

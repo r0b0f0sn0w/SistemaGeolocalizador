@@ -65,13 +65,13 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Ingrese su contraseña", Toast.LENGTH_LONG).show();
                             return;
                         } else {
-                            JSONObject json = new JSONObject();
+                            JSONObject eljson = new JSONObject();
                             try {
-                                json.put("correo", txtLoginCorreo.getText().toString());
-                                json.put("password", txtLoginContrasenia.getText().toString());
-                                new iniciarsesion().execute("https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/login.php", json.toString());
+                                eljson.put("correo", txtLoginCorreo.getText().toString());
+                                eljson.put("password", txtLoginContrasenia.getText().toString());
+                                new iniciarsesion().execute("https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/login.php", eljson.toString());
                             } catch (JSONException e) {
-                                Log.i("Error", "El error:\n" + e);
+                                Log.e("Error", "El error:\n" + e);
                             }
                         }//CIerra else
                     }//Cierra else
@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             try {
-                JSONObject json = new JSONObject(result);
+                JSONObject json = new JSONObject(result.replaceAll("[^\\x00-\\x7F]", ""));
                 JSONArray datos=json.getJSONArray("usuario");
                 String estado="";
                 for (int i=0;i<datos.length();i++){
@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(estado!=null){
                     switch (estado){
                         case "0":
-                            Toast.makeText(LoginActivity.this,"Su cuenta no se ha verificado",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Usted no ha verificado su cuenta.",Toast.LENGTH_LONG).show();
                             if(cuadroDialogo.isShowing()){
                                 cuadroDialogo.dismiss();
                             }
@@ -179,7 +179,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(cuadroDialogo.isShowing()){
                                 cuadroDialogo.dismiss();
                             }
-                            Toast.makeText(LoginActivity.this,"Correo o contraseña incorrecta (s)",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"Correo o contrasenia incorrecta (s)",Toast.LENGTH_LONG).show();
                             break;
                     }//Cierra switch
                 }//Cierra if
@@ -187,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e("El error:\n",e.toString());
                 if(cuadroDialogo.isShowing()){
                     cuadroDialogo.dismiss();
-                    Toast.makeText(LoginActivity.this,"Correo eletronico o contraseña incorrectos",Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"Ha sucedido un error intente mas tárde: "+e,Toast.LENGTH_LONG).show();
                 }
             }
         }//Cierra el postOnExecute
@@ -247,6 +247,7 @@ public class LoginActivity extends AppCompatActivity {
                                     json.put("password",txtRegistroPassword.getText().toString());
                                     new registrarse().execute("https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/crearUsuarioResponsable.php",json.toString());
                                 } catch (JSONException e) {
+                                    Log.e("El json: ",json.toString());
                                     e.printStackTrace();
                                     dialogoRegistrarse.dismiss();
                                 }
@@ -266,7 +267,6 @@ public class LoginActivity extends AppCompatActivity {
                 dialogoRegistrarse.dismiss();
             }
         });
-        //Toast.makeText(LoginActivity.this,"Funciona",Toast.LENGTH_LONG).show();
     }//Cierra el metodo para mostrar el formulario de registro
     private class registrarse extends AsyncTask<String, Void, String> {
         protected void onPreExecute(){
@@ -334,7 +334,7 @@ public class LoginActivity extends AppCompatActivity {
             } catch(JSONException e){
                 if(cuadroDialogo.isShowing()){
                     cuadroDialogo.dismiss();
-                    Toast.makeText(LoginActivity.this,"No se ha podido enviar el correo de recuperacion, verifique su conexion a internet "+e,Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"No se ha podido registrar su cuenta"+e+" \n El js :("+result.toString(),Toast.LENGTH_LONG).show();
                 }
             }
         }//Cierra el postOnExecute
@@ -348,16 +348,178 @@ public class LoginActivity extends AppCompatActivity {
         builder.setView(vista);
         final AlertDialog dialogoRecuperarCuenta =builder.create();
         dialogoRecuperarCuenta.show();
-        Button btnFrmRegistrarse=vista.findViewById(R.id.btnEnviarRecuperarCuenta);
-        btnFrmRegistrarse.setOnClickListener(new View.OnClickListener() {
+        Button btnEnviarRecuperarCuenta=vista.findViewById(R.id.btnEnviarRecuperarCuenta);
+        final EditText txtCorreoRecuperarCuenta=vista.findViewById(R.id.txtCorreoRecuperarCuenta);
+        btnEnviarRecuperarCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
                 Toast.makeText(LoginActivity.this,"Funciona",Toast.LENGTH_LONG).show();
-                dialogoRecuperarCuenta.dismiss();*/
+                if(txtCorreoRecuperarCuenta.getText().toString().isEmpty()){
+                    Toast.makeText(LoginActivity.this,"Ingrese un correo",Toast.LENGTH_LONG).show();
+                    return;
+                }else{
+                    JSONObject recuperarjson= new JSONObject();
+                    try {
+                        recuperarjson.put("correo_electronico",txtCorreoRecuperarCuenta.getText().toString());
+                        new recuperarCuenta(txtCorreoRecuperarCuenta.getText().toString().trim()).execute("https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/validarCorreo.php",recuperarjson.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }//Cierra el metodo para mostrar el formulario de registro
+    public class recuperarCuenta extends AsyncTask<String, Void, String> {
+        String correo;
+        public recuperarCuenta(String email){
+            correo=email;
+        }
+        protected void onPreExecute(){
+            super.onPreExecute();
+            cuadroDialogo=new ProgressDialog(LoginActivity.this);
+            cuadroDialogo.setMessage("Verificando estado de la cuenta, por favor espere");
+            cuadroDialogo.setCancelable(false);
+            cuadroDialogo.show();
+        }
+        @Override
+        protected String doInBackground(String... strings) {
+            String data = "";
+            HttpURLConnection httpURLConnection = null;
+            try {
+                httpURLConnection = (HttpURLConnection) new URL(strings[0]).openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+                wr.writeBytes(strings[1]);
+                wr.flush();
+                wr.close();
+                InputStream in = httpURLConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(in);
+                int inputStreamData = inputStreamReader.read();
+                while (inputStreamData != -1) {
+                    char current = (char) inputStreamData;
+                    inputStreamData = inputStreamReader.read();
+                    data += current;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (httpURLConnection != null) {
+                    httpURLConnection.disconnect();
+                }
+            }
+            return data;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            try {
+                JSONObject json=new JSONObject(result.replaceAll("[^\\x00-\\x7F]", ""));
+                JSONArray registros=json.getJSONArray("correo_electronico");
+                String email="";
+                String id="";
+                for (int i=0;i<registros.length();i++){
+                    JSONObject correo=registros.getJSONObject(i);
+                    email=correo.getString("correo_electronico");
+                    id=correo.getString("id_usuarioResp");
+                }
+                if(email.equals(correo.trim())){
+                    if(cuadroDialogo.isShowing()){
+                        cuadroDialogo.dismiss();
+                        Toast.makeText(LoginActivity.this,"Se recupero la info",Toast.LENGTH_LONG).show();
+                    }
+                    JSONObject js= new JSONObject();
+                    try {
+                        js.put("id_usuarioResp",id);
+                        js.put("correo_electronico",email);
+                        new EnviarCorreo().execute("https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/enviarCorreo.php",js.toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } catch(JSONException e){
+                if(cuadroDialogo.isShowing()){
+                    cuadroDialogo.dismiss();
+                    Log.e("EL error",""+e.getLocalizedMessage());
+                    Toast.makeText(LoginActivity.this,"No se ha podido enviar el correo de recuperacion, verifique su conexion a internet "+e,Toast.LENGTH_LONG).show();
+                }
+            }
+        }//Cierra el postOnExecute
+    }//Cierrra clase recuperarCuenta
+
+    private class EnviarCorreo extends AsyncTask<String, Void, String> {
+        protected void onPreExecute(){
+            super.onPreExecute();
+            cuadroDialogo=new ProgressDialog(LoginActivity.this);
+            cuadroDialogo.setMessage("Enviando correo electronico, espere un momento");
+            cuadroDialogo.setCancelable(false);
+            cuadroDialogo.show();
+        }
+        @Override
+        protected String doInBackground(String... strings) {
+            String data = "";
+            HttpURLConnection httpURLConnection = null;
+            try {
+                httpURLConnection = (HttpURLConnection) new URL(strings[0]).openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
+                wr.writeBytes(strings[1]);
+                wr.flush();
+                wr.close();
+                InputStream in = httpURLConnection.getInputStream();
+                InputStreamReader inputStreamReader = new InputStreamReader(in);
+                int inputStreamData = inputStreamReader.read();
+                while (inputStreamData != -1) {
+                    char current = (char) inputStreamData;
+                    inputStreamData = inputStreamReader.read();
+                    data += current;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (httpURLConnection != null) {
+                    httpURLConnection.disconnect();
+                }
+            }
+            return data;
+        }
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            try {
+                JSONObject jsonObject=new JSONObject(result.replaceAll("[^\\x00-\\x7F]", ""));
+                JSONArray registro=jsonObject.getJSONArray("mensaje");
+                for (int i=0;i<registro.length();i++){
+                    JSONObject usuario=registro.getJSONObject(i);
+                    if(usuario.getString("mensaje").equals("ok")){
+                        if(cuadroDialogo.isShowing()){
+                            cuadroDialogo.dismiss();
+                            Toast.makeText(LoginActivity.this,"Se a enviado un correo electronico para la reactivacion y/o cambio de contraseña, revise su bandeja de spam",Toast.LENGTH_LONG).show();
+                            Intent intento = new Intent(LoginActivity.this, LoginActivity.class);
+                            startActivity(intento);
+                            finish();
+                        }
+                    }else if(
+                            usuario.getString("mensaje").equals("no")){
+                        if(cuadroDialogo.isShowing()){
+                            cuadroDialogo.dismiss();
+                            Toast.makeText(LoginActivity.this,"No se ha podido enviar el correo electronico",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }//Cierra for
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Toast.makeText(LoginActivity.this,"No error"+e,Toast.LENGTH_LONG).show();
+                if(cuadroDialogo.isShowing()){
+                    cuadroDialogo.dismiss();
+                }
+            }
+            if(cuadroDialogo.isShowing()){
+                cuadroDialogo.dismiss();
+            }
+        }//Cierra el postOnExecute
+    }//Cierra la clase enviar correo
     private String validarFRM(String n, String Ap, String Am, String t, String t2, String dir, String email, String pass,String pass2) {
         String v = "";
         if (n.isEmpty()|| Ap.isEmpty() || Am.isEmpty()|| t.isEmpty() || t2.isEmpty()|| dir.isEmpty()|| email.isEmpty()|| pass.isEmpty()|| pass2.isEmpty()) {
