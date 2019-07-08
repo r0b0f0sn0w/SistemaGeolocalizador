@@ -1,5 +1,6 @@
 package com.r0_f0.SistemaGeolocalizador;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +20,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -40,17 +44,20 @@ public class HomeActivity extends AppCompatActivity
     private ProgressDialog cuadroDialogo;
     protected RecyclerView recyclerPortadores;
     protected ArrayList <UsuarioPortador> listausuarios;
+    private String idusuario,elcorreo="";
     AdaptadorPortadores a=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        String idusuario= getIntent().getStringExtra("userid");
+        String elcorreo= getIntent().getStringExtra("correo");
         recyclerPortadores=findViewById(R.id.recyclerPortadores);
         recyclerPortadores.setLayoutManager(new LinearLayoutManager(this));
 
         JSONObject json = new JSONObject();
         try{
-            json.put("usuario","2");
+            json.put("usuario",idusuario);
             new TraerPortadores().execute("https://raesaldro.000webhostapp.com/WebServicesGeolocalizador/traerUsuariosPortadores.php", json.toString());
         } catch (JSONException e) {
 
@@ -114,16 +121,8 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.confCuenta) {
+            mostrarConf();
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -173,7 +172,7 @@ public class HomeActivity extends AppCompatActivity
             UsuarioPortador user=null;
             listausuarios=new ArrayList<>();
             try {
-                JSONObject jsonObject=new JSONObject(result);
+                JSONObject jsonObject=new JSONObject(result.replaceAll("[^\\x00-\\x7F]", ""));
                 // Identificar por el nodo padre
                 JSONArray registros=jsonObject.getJSONArray("usuarios");
                 for(int i=0; i<=registros.length(); i++){
@@ -205,4 +204,39 @@ public class HomeActivity extends AppCompatActivity
 
         }//Cierra el postOnExecute
     }//Cierra la clase de consultar usuarios portadores
+    private void mostrarConf(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        LayoutInflater inflador = getLayoutInflater();
+        final View vista =inflador.inflate(R.layout.configuraciondecuenta,null);
+        builder.setView(vista);
+        final AlertDialog dialogoRecuperarCuenta =builder.create();
+        dialogoRecuperarCuenta.show();
+        final Button btnConfEditar=vista.findViewById(R.id.btnConfEditar);
+        final Button btnConfCambiosGuardar=vista.findViewById(R.id.btnConfCambiosGuardar);
+        final EditText txtConfiguracionNombre=vista.findViewById(R.id.txtConfiguracionNombre);
+        txtConfiguracionNombre.setEnabled(false);
+        final EditText txtConfiguracionAppPat=vista.findViewById(R.id.txtConfiguracionAppPat);
+        txtConfiguracionAppPat.setEnabled(false);
+        final EditText txtConfiguracionAppMat=vista.findViewById(R.id.txtConfiguracionAppMat);
+        txtConfiguracionAppMat.setEnabled(false);
+        final EditText txtConfiguracionTelefono=vista.findViewById(R.id.txtConfiguracionTelefono);
+        txtConfiguracionTelefono.setEnabled(false);
+        final EditText txtConfiguracionTelefono2=vista.findViewById(R.id.txtConfiguracionTelefono2);
+        txtConfiguracionTelefono2.setEnabled(false);
+        final EditText txtConfiguracionDireccion=vista.findViewById(R.id.txtConfiguracionDireccion);
+        txtConfiguracionDireccion.setEnabled(false);
+        btnConfEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                txtConfiguracionNombre.setEnabled(true);
+                txtConfiguracionAppPat.setEnabled(true);
+                txtConfiguracionAppMat.setEnabled(true);
+                txtConfiguracionTelefono.setEnabled(true);
+                txtConfiguracionTelefono2.setEnabled(true);
+                txtConfiguracionDireccion.setEnabled(true);
+                btnConfCambiosGuardar.setVisibility(View.VISIBLE);
+                btnConfEditar.setVisibility(View.INVISIBLE);
+            }
+        });
+    }
 }//Cierra la calse HomeActivity

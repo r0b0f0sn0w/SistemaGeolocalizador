@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtLoginCorreo, txtLoginContrasenia;
     public ProgressDialog cuadroDialogo;
     private String id;
-    public AlertDialog dialogoRegistrarse,dialogoRecuperarCuenta;
+    public AlertDialog dialogoRegistrarse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -353,7 +353,6 @@ public class LoginActivity extends AppCompatActivity {
         btnEnviarRecuperarCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this,"Funciona",Toast.LENGTH_LONG).show();
                 if(txtCorreoRecuperarCuenta.getText().toString().isEmpty()){
                     Toast.makeText(LoginActivity.this,"Ingrese un correo",Toast.LENGTH_LONG).show();
                     return;
@@ -426,7 +425,6 @@ public class LoginActivity extends AppCompatActivity {
                 if(email.equals(correo.trim())){
                     if(cuadroDialogo.isShowing()){
                         cuadroDialogo.dismiss();
-                        Toast.makeText(LoginActivity.this,"Se recupero la info",Toast.LENGTH_LONG).show();
                     }
                     JSONObject js= new JSONObject();
                     try {

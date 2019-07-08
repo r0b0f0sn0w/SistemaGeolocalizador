@@ -140,26 +140,25 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"/>
             </android.support.design.widget.TextInputLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/btnFrmCancelar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/cancelar"
-                    android:textSize="18dp"
-                    android:layout_gravity="left"/>
-                <Button
-                    android:id="@+id/btnFrmRegistrarse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/crear_cuenta"
-                    android:textSize="18dp"
-                    android:layout_gravity="right"/>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00439E">
+        <Button
+            android:id="@+id/btnFrmCancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:textSize="18dp"
+            android:layout_gravity="left"/>
+        <Button
+            android:id="@+id/btnFrmRegistrarse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_cuenta"
+            android:textSize="18dp"
+            android:layout_gravity="right"/>
+    </FrameLayout>
 </LinearLayout>
