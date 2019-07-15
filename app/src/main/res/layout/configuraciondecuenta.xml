@@ -27,7 +27,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/swDesactivarCuenta"
                 android:text="Desactivar mi cuenta"
-                android:textSize="17dp"/>
+                android:textSize="17dp"
+                android:onClick="onclick"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +76,7 @@
                     android:id="@+id/txtConfiguracionTelefono"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -86,7 +87,7 @@
                     android:id="@+id/txtConfiguracionTelefono2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="number"/>
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -114,6 +115,14 @@
                     android:text="Guardar cambios"
                     android:layout_gravity="end|right"
                     android:id="@+id/btnConfCambiosGuardar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:textStyle="bold"/>
+                <Button
+                    android:text="Cancelar"
+                    android:layout_gravity="end|left"
+                    android:id="@+id/btnConfCambiosCancelar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:visibility="gone"
